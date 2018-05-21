@@ -13,7 +13,7 @@ var_dump($test);
  	<form action="test.php" method="POST">
   <?php 
     // $file1 = fopen('C:/wamp64/www/Netology/form/tests/123.json', 'r');
-    $file = file_get_contents('C:/wamp64/www/Netology/form/tests/123.json'); 
+    $file = file_get_contents('tests/123.json'); 
     $taskList = json_decode($file,TRUE); 
     var_dump($taskList);
     
@@ -23,7 +23,7 @@ var_dump($test);
       {              
         print_r('<legend>'.$key.'</legend>');
         foreach ($value as $key3 => $value3) {
-        print_r('<label><input type="radio" name="'.$value3.'">'.$value3.'</label><br>');
+        print_r('<label><input type="radio" name="q'.$i.'">'.$value3.'</label><br>');
       }
       print_r('<br><br>');
       $i++;
