@@ -8,10 +8,6 @@
 </head>
 <body>
 	<form action="admin.php" enctype="multipart/form-data" method="POST">
-		<label for="filename">
-			Желаемое имя файла
-			<input id="filename" type="text" name="filename" required>
-		</label>
 		<br>
 		<label for="ourfile">
 			Выберете файл
@@ -23,10 +19,11 @@
 <?php 
 	
 	if (!empty($_FILES) && array_key_exists('ourfile', $_FILES)) {
-		move_uploaded_file($_FILES['ourfile']['tmp_name'], ('tests/'.$_POST['filename'].'.json'));
+		$filename = $_FILES['ourfile']['name'];
+		move_uploaded_file($_FILES['ourfile']['tmp_name'], ('tests/'.$filename.'.json'));
 		$file = file_get_contents('data.json');
 		$taskList = json_decode($file,TRUE); 
-		$taskList[] = $_POST['filename'];
+		$taskList[] = $filename;
 		file_put_contents('data.json',json_encode($taskList));
 		echo 'огонь';
 	}
