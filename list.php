@@ -6,16 +6,16 @@
 </head>
 <body>
 	<?php 
-	$file = file_get_contents('data.json'); 
-	$taskList = json_decode($file,TRUE); 
-	var_dump($taskList);
+	$dir = 'tests';
+	$filees = scandir($dir);
 	 ?>
 	 <h1>Список тестов:</h1>
 		<form action="test.php"></form>
 	 	<?php 
-	 		foreach ($taskList as $key => $value) {
-	 			# code...
-	 		print_r ('<a href="test.php?'.$value.'">'.$value.'</a><br>');
+	 		foreach ($filees as $key => $value) {
+	 		if (($key!=0)&&($key!=1)) {	 		
+	 			print_r ('<a href="test.php?'.$value.'">'.substr($value, 0, -5).'</a><br>');
+	 			}
 	 		}
 	 	?>
 </body>
