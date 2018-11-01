@@ -17,7 +17,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
     exit;
 	} elseif (isset($_SERVER['PHP_AUTH_USER'])) {
     		$_SESSION['name'] = $_SERVER['PHP_AUTH_USER'];    		
-    		header('Location: /netology/test/list.php ');
+    		header('Location: ./list.php ');
     exit;
 
 	} else {	
